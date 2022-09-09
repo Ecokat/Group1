@@ -1,0 +1,488 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="#"><i class='bx bxs-cake' style="color: #ffce3a;"></i>Bakerz Bite</a></h1>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                <li><a class="nav-link scrollto " href="#gallery">Gallery</a></li>
+
+
+                <li><a class="nav-link scrollto " href="#!/products"><i class='bx bx-baguette'
+                            style="font-size: 16px;"></i> Products</a></li>
+
+                <li class="dropdown"><a href="#!/customer"><span> <i class='bx bxs-user' style="font-size: 16px;"></i>
+                            {{customer}} </span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#!/login"> {{customer1}} </a></li>
+                        <li><a href="#!/signup"> {{customer2}} </a></li>
+                        <li><a href="#!/cart"> {{customer3}} </a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="#!/cart"> <i class='bx bx-cart' style="font-size: 20px;"></i>
+                        Cart &nbsp;<div class="cart-number text-center">{{cartnumber}}</div> </a></li>
+                <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Products</h2>
+                <ol>
+                    <li><a href="#">Home</a></li>
+                    <li>Products</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Products ======= -->
+    <section class="gallery">
+        <div class="section-title">
+            <h2><i class='bx bxs-baguette' style="font-size: 40px; color: #ffce3a;"></i> Baked Goods </h2>
+            <p>“Where there is cake, there is hope. And there is always cake.” – Dean Koontz </p>
+            <p style="font-size: 20px ; color: #ffce3a;">Tips: <i class='bx bx-image'></i> Click to images for product
+                details <i class='bx bx-image'></i></p>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="gallery-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-cake">Cakes</li>
+                        <li data-filter=".filter-cupcake">Cupcakes</li>
+                        <li data-filter=".filter-cakepop">Cakepops</li>
+                        <li data-filter=".filter-cookie">Cookies</li>
+                        <li data-filter=".filter-macaron">Macarons</li>
+                        <li data-filter=".filter-brownie">Brownies</li>
+                        <li data-filter=".filter-pastry">Pastries</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row gallery-container">
+
+                <div class="gallery-item filter-cake">
+                    <h2 style="width: 150px;"> Cakes</h2>
+                </div>
+
+                <div class="col-lg-3 col-md-6 gallery-item filter-cake" ng-repeat="cake in cakes"
+                    style="margin-bottom: 50px ;">
+                    <div style="height: 320px;">
+                        <img src="assets/img/products/{{cake.pimg}}" class="img-fluid" ng-click="detail(cake)">
+                    </div>
+                    <h5 class="text-center">{{cake.pname}}</h5>
+                    <h5 class="text-center">{{cake.pprice | currency }}</h5>
+                    <div class="text-center form-group mt-3">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                    </div>
+                    <form class="text-center form-group mt-3">
+                        <input type="hidden" ng-model="prd.id" ng-init="prd.id=cake.pid">
+                        <input type="hidden" ng-model="prd.name" ng-init="prd.name=cake.pname">
+                        <input type="hidden" ng-model="prd.price" ng-init="prd.price=cake.pprice">
+                        <input type="hidden" ng-model="prd.img" ng-init="prd.img=cake.pimg">
+                        <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i
+                                class='bx bx-cart-add' style="font-size: 22px;"></i>
+                            Add to Cart
+                        </button>
+
+                        <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                                x {{prd.name}}</b> to your Cart ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="gallery-item filter-cupcake">
+                    <h2> Cupcakes</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 gallery-item filter-cupcake" ng-repeat="cupcake in cupcakes"
+                    style="margin-bottom: 50px ;">
+                    <div style="height: 320px;">
+                        <img src="assets/img/products/{{cupcake.pimg}}" class="img-fluid" ng-click="detail(cupcake)">
+                    </div>
+                    <h5 class="text-center">{{cupcake.pname}}</h5>
+                    <h5 class="text-center">{{cupcake.pprice | currency }}</h5>
+                    <div class="text-center form-group mt-3">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                    </div>
+                    <form class="text-center form-group mt-3">
+                        <input type="hidden" ng-model="prd.id" ng-init="prd.id=cupcake.pid">
+                        <input type="hidden" ng-model="prd.name" ng-init="prd.name=cupcake.pname">
+                        <input type="hidden" ng-model="prd.price" ng-init="prd.price=cupcake.pprice">
+                        <input type="hidden" ng-model="prd.img" ng-init="prd.img=cupcake.pimg">
+                        <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i
+                                class='bx bx-cart-add' style="font-size: 22px;"></i>
+                            Add to Cart
+                        </button>
+
+                        <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                                x {{prd.name}}</b> to your Cart ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="gallery-item filter-cookie">
+                    <h2> Cookie</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 gallery-item filter-cookie" ng-repeat="cookie in cookies"
+                    style="margin-bottom: 50px ;">
+                    <div style="height: 320px;">
+                        <img src="assets/img/products/{{cookie.pimg}}" class="img-fluid" ng-click="detail(cookie)">
+                    </div>
+                    <h5 class="text-center">{{cookie.pname}}</h5>
+                    <h5 class="text-center">{{cookie.pprice | currency }}</h5>
+                    <div class="text-center form-group mt-3">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                    </div>
+                    <form class="text-center form-group mt-3">
+                        <input type="hidden" ng-model="prd.id" ng-init="prd.id=cookie.pid">
+                        <input type="hidden" ng-model="prd.name" ng-init="prd.name=cookie.pname">
+                        <input type="hidden" ng-model="prd.price" ng-init="prd.price=cookie.pprice">
+                        <input type="hidden" ng-model="prd.img" ng-init="prd.img=cookie.pimg">
+                        <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i
+                                class='bx bx-cart-add' style="font-size: 22px;"></i>
+                            Add to Cart
+                        </button>
+
+                        <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                                x {{prd.name}}</b> to your Cart ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="gallery-item filter-brownie">
+                    <h2> Brownies</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 gallery-item filter-brownie" ng-repeat="brownie in brownies"
+                    style="margin-bottom: 50px ;">
+                    <div style="height: 320px;">
+                        <img src="assets/img/products/{{brownie.pimg}}" class="img-fluid" ng-click="detail(brownie)">
+                    </div>
+                    <h5 class="text-center">{{brownie.pname}}</h5>
+                    <h5 class="text-center">{{brownie.pprice | currency }}</h5>
+                    <div class="text-center form-group mt-3">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                    </div>
+                    <form class="text-center form-group mt-3">
+                        <input type="hidden" ng-model="prd.id" ng-init="prd.id=brownie.pid">
+                        <input type="hidden" ng-model="prd.name" ng-init="prd.name=brownie.pname">
+                        <input type="hidden" ng-model="prd.price" ng-init="prd.price=brownie.pprice">
+                        <input type="hidden" ng-model="prd.img" ng-init="prd.img=brownie.pimg">
+                        <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i
+                                class='bx bx-cart-add' style="font-size: 22px;"></i>
+                            Add to Cart
+                        </button>
+
+                        <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                                x {{prd.name}}</b> to your Cart ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="gallery-item filter-pastry">
+                    <h2> Pastries</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 gallery-item filter-pastry" ng-repeat="pastry in pastries"
+                    style="margin-bottom: 50px ;">
+                    <div style="height: 320px;">
+                        <img src="assets/img/products/{{pastry.pimg}}" class="img-fluid" ng-click="detail(pastry)">
+                    </div>
+                    <h5 class="text-center">{{pastry.pname}}</h5>
+                    <h5 class="text-center">{{pastry.pprice | currency }}</h5>
+                    <div class="text-center form-group mt-3">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                    </div>
+                    <form class="text-center form-group mt-3">
+                        <input type="hidden" ng-model="prd.id" ng-init="prd.id=pastry.pid">
+                        <input type="hidden" ng-model="prd.name" ng-init="prd.name=pastry.pname">
+                        <input type="hidden" ng-model="prd.price" ng-init="prd.price=pastry.pprice">
+                        <input type="hidden" ng-model="prd.img" ng-init="prd.img=pastry.pimg">
+                        <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i
+                                class='bx bx-cart-add' style="font-size: 22px;"></i>
+                            Add to Cart
+                        </button>
+
+                        <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                                x {{prd.name}}</b> to your Cart ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="gallery-item filter-cakepop">
+                    <h2> Cakepops</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 gallery-item filter-cakepop" ng-repeat="cakepop in cakepops"
+                    style="margin-bottom: 50px ;">
+                    <div style="height: 320px;">
+                        <img src="assets/img/products/{{cakepop.pimg}}" class="img-fluid" ng-click="detail(cakepop)">
+                    </div>
+                    <h5 class="text-center">{{cakepop.pname}}</h5>
+                    <h5 class="text-center">{{cakepop.pprice | currency }}</h5>
+                    <div class="text-center form-group mt-3">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                    </div>
+                    <form class="text-center form-group mt-3">
+                        <input type="hidden" ng-model="prd.id" ng-init="prd.id=cakepop.pid">
+                        <input type="hidden" ng-model="prd.name" ng-init="prd.name=cakepop.pname">
+                        <input type="hidden" ng-model="prd.price" ng-init="prd.price=cakepop.pprice">
+                        <input type="hidden" ng-model="prd.img" ng-init="prd.img=cakepop.pimg">
+                        <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i
+                                class='bx bx-cart-add' style="font-size: 22px;"></i>
+                            Add to Cart
+                        </button>
+
+                        <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                                x {{prd.name}}</b> to your Cart ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="gallery-item filter-macaron">
+                <h2> Macarons</h2>
+            </div>
+            <div class="col-lg-3 col-md-6 gallery-item filter-macaron" ng-repeat="macaron in macarons"
+                style="margin-bottom: 50px ;">
+                <div style="height: 320px;">
+                    <img src="assets/img/products/{{macaron.pimg}}" class="img-fluid" ng-click="detail(macaron)">
+                </div>
+                <h5 class="text-center">{{macaron.pname}}</h5>
+                <h5 class="text-center">{{macaron.pprice | currency }}</h5>
+                <div class="text-center form-group mt-3">
+                    <label for="qty">Quantity:</label>
+                    <input type="number" ng-model="prd.qty" min="0" ng-init="prd.qty = 0">
+                </div>
+                <form class="text-center form-group mt-3">
+                    <input type="hidden" ng-model="prd.id" ng-init="prd.id=macaron.pid">
+                    <input type="hidden" ng-model="prd.name" ng-init="prd.name=macaron.pname">
+                    <input type="hidden" ng-model="prd.price" ng-init="prd.price=macaron.pprice">
+                    <input type="hidden" ng-model="prd.img" ng-init="prd.img=macaron.pimg">
+                    <button class="add" data-bs-toggle="modal" data-bs-target="#a{{prd.id}}"><i class='bx bx-cart-add'
+                            style="font-size: 22px;"></i>
+                        Add to Cart
+                    </button>
+
+                    <div class="modal fade" id="a{{prd.id}}" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p> Add <b class="text-capitalize" style="color: #ffce3a ;">{{prd.qty}}
+                                            x {{prd.name}}</b> to your Cart ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                        ng-click="addCart(prd)"> <i class='bx bx-cart-add'></i> Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+    </section>
+    <!-- End Products-->
+</main>
+
+<footer id="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 footer-contact">
+                    <h3><i class='bx bxs-cake'></i>Bakerz Bite</h3>
+                    <p>
+                        54 Le Thanh Nghi Street <br>
+                        Hai Ba Trung district, Ha Noi<br>
+                        Viet Nam <br><br>
+                        <strong>Phone:</strong> 0523.917.089<br>
+                        <strong>Email:</strong> minh.nv.2045@aptechlearning.edu.vn<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Map</h4>
+                    <ul>
+                        <li><iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.729556123599!2d105.84769451485397!3d21.00347528601206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad58455db2ab%3A0x9b3550bc22fd8bb!2zNTQgUC4gTMOqIFRoYW5oIE5naOG7iywgQsOhY2ggS2hvYSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1660708139799!5m2!1sen!2s"
+                                width="340" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe></li>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4> General</h4>
+                    <ul>
+                        <li><i class='bx bxs-time'></i>&nbsp; {{theTime}}</li>
+                        <li><i class='bx bxs-user-plus'></i>&nbsp; Visitor Counts: {{vcounter}}</li>
+                        <li><i class='bx bx-current-location'></i>&nbsp; Your Location: &nbsp;<div id="city"></div>
+                            &nbsp; <div id="country"></div>
+                        </li>
+                        <li><i class='bx bx-signal-5'></i>&nbsp; Your IP : &nbsp;<div id="ip"></div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Bakerz Bite</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+                Designed by <a href="#">C2112L Group1 AptechVN</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="youtube"><i class='bx bxl-youtube'></i></a>
+            <a href="#" class="reddit"><i class='bx bxl-reddit'></i></a>
+            <a href="#" class="tiktok"><i class='bx bxl-tiktok'></i></a>
+
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+
+
+<script src="assets/js/script.js"></script>

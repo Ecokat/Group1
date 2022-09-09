@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="assets/css/admin.css">
+
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center"><img src="assets/img/avatar.png" alt="..." width="65"
+                class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0">&nbsp;ADMIN</h4>
+
+            </div>
+        </div>
+    </div>
+
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="#!/admin" class="nav-link text-dark font-italic">
+                <i class="bi bi-gear-fill"></i>
+                Admin Settings
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#!/admin-custs" class="nav-link text-dark font-italic ">
+                <i class="bi bi-person-fill"></i>
+                Customers
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-products" class="nav-link text-dark font-italic">
+                <i class='bx bxs-baguette'></i>
+                Products
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-ctgs" class="nav-link text-dark font-italic">
+                <i class="bi bi-list-columns-reverse"></i>
+                Categories
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-orders" class="nav-link text-dark font-italic">
+                <i class="bi bi-card-checklist"></i>
+                Orders
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-feedbacks" class="nav-link text-dark font-italic bg-light">
+                <i class="bi bi-layout-text-sidebar-reverse"></i>
+                Feedbacks
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-contacts" class="nav-link text-dark font-italic">
+                <i class="bi bi-envelope-fill"></i>
+                Contacts 
+            </a>
+        </li>
+    </ul>
+
+
+</div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+    <!-- Toggle button -->
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+            class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold"> Menu</small></button>
+    <section class="history"> 
+        <h3>Feedback Management  <br>
+        <div class="table-responsive">
+            <table class="col-12 table table-hover table-striped">
+                <thead>
+                    <tr class="table-light">
+                        <th>Order ID</th>
+                        <th>Review</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="feedback in feedbacks">
+                        <td>{{feedback.orderid}}</td>
+                        <td>{{feedback.review}}</td>
+                        <td>{{feedback.rating}} / 5</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+
+    </section>
+    <!-- Content -->
+
+
+</div>
+<!-- End content -->
+
+<script src="assets/js/admin.js"></script>

@@ -1,0 +1,194 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="#"><i class='bx bxs-cake' style="color: #ffce3a;"></i>Bakerz Bite</a></h1>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                <li><a class="nav-link scrollto " href="#gallery">Gallery</a></li>
+
+
+                <li><a class="nav-link scrollto " href="#!/products"><i class='bx bx-baguette' style="font-size: 16px;"></i> Products</a></li>
+
+                <li class="dropdown"><a href="#!/customer"><span> <i class='bx bxs-user' style="font-size: 16px;"></i>
+                            {{customer}} </span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#!/login"> {{customer1}} </a></li>
+                        <li><a href="#!/signup"> {{customer2}} </a></li>
+                        <li><a href="#!/cart"> {{customer3}} </a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="#!/cart"> <i class='bx bx-cart' style="font-size: 20px;"></i>
+                        Cart &nbsp;<div class="cart-number text-center">{{cartnumber}}</div> </a></li>
+                <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Login Page</h2>
+                <ol>
+                    <li><a href="#">Home</a></li>
+                    <li>Customer</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="login" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Sign In with us</h2>
+                <p>
+                    Sign in to make the best of our products and services.</p>
+                <a href="#!/signup" style="font-size: 20px;"> Not our member yet? Click here to Sign Up.</a>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="info-box">
+                                <i class='bx bxs-gift'></i>
+                                <h3>Gifts</h3>
+                                <p>Get our best offers just by being our membership.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mt-4">
+                                <i class='bx bx-cake'></i>
+                                <h3>Cakes</h3>
+                                <p>Bake inspiration through life.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mt-4">
+                                <i class='bx bxs-drink'></i>
+                                <h3>Beverages</h3>
+                                <p> Drink up! </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <form role="form" class="php-email-form">
+
+                        <div class="form-group mt-3">
+                            <input type="email" class="form-control" ng-model="cust.email"  id="email"
+                                placeholder="Your Email...">
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="password" class="form-control" ng-model="cust.password"  id="password"
+                                placeholder="Your Password...">
+                        </div>
+                        <div class="text-center form-group mt-3">
+                            <input type="checkbox" checked> Remember me
+                        </div>
+                        <div  class="text-center form-group mt-3" ng-show="errorLogin">
+                             <div class="error">{{ errorMsg }} </div>
+                        </div>
+
+                        <div class="text-center mt-3"><button type="submit" ng-click="login(cust)">Sign In</button></div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer id="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 footer-contact">
+                    <h3><i class='bx bxs-cake'></i>Bakerz Bite</h3>
+                    <p>
+                        54 Le Thanh Nghi Street <br>
+                        Hai Ba Trung district, Ha Noi<br>
+                        Viet Nam <br><br>
+                        <strong>Phone:</strong> 0523.917.089<br>
+                        <strong>Email:</strong> minh.nv.2045@aptechlearning.edu.vn<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Map</h4>
+                    <ul>
+                        <li><iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.729556123599!2d105.84769451485397!3d21.00347528601206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad58455db2ab%3A0x9b3550bc22fd8bb!2zNTQgUC4gTMOqIFRoYW5oIE5naOG7iywgQsOhY2ggS2hvYSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1660708139799!5m2!1sen!2s"
+                                width="340" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe></li>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4> General</h4>
+                    <ul>
+                        <li><i class='bx bxs-time'></i>&nbsp; {{theTime}}</li>
+                        <li><i class='bx bxs-user-plus'></i>&nbsp; Visitor Counts: {{vcounter}}</li>
+                        <li><i class='bx bx-current-location'></i>&nbsp; Your Location: &nbsp;<div id="city"></div>
+                            &nbsp; <div id="country"></div>
+                        </li>
+                        <li><i class='bx bx-signal-5'></i>&nbsp; Your IP : &nbsp;<div id="ip"></div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Bakerz Bite</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+                Designed by <a href="#">C2112L Group1 AptechVN</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="youtube"><i class='bx bxl-youtube'></i></a>
+            <a href="#" class="reddit"><i class='bx bxl-reddit'></i></a>
+            <a href="#" class="tiktok"><i class='bx bxl-tiktok'></i></a>
+
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+<script src="assets/js/script.js"></script>

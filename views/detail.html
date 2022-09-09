@@ -1,0 +1,202 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="#"><i class='bx bxs-cake' style="color: #ffce3a;"></i>Bakerz Bite</a></h1>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                <li><a class="nav-link scrollto " href="#gallery">Gallery</a></li>
+
+
+                <li><a class="nav-link scrollto " href="#!/products"><i class='bx bx-baguette'
+                            style="font-size: 16px;"></i> Products</a></li>
+
+                <li class="dropdown"><a href="#!/customer"><span> <i class='bx bxs-user' style="font-size: 16px;"></i>
+                            {{customer}} </span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#!/login"> {{customer1}} </a></li>
+                        <li><a href="#!/signup"> {{customer2}} </a></li>
+                        <li><a href="#!/cart"> {{customer3}} </a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="#!/cart"> <i class='bx bx-cart' style="font-size: 20px;"></i>
+                        Cart &nbsp;<div class="cart-number text-center">{{cartnumber}}</div> </a></li>
+                <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#!/products">
+                    <h2><i class='bx bxs-chevron-left'></i> Back To Products</h2>
+                </a>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Products</li>
+                    <li>Details</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="gallery-details">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-7 col-md-6">
+                    <div class="gallery-details">
+                        <div class="align-items-center">
+
+                            <div>
+                                <img src="assets/img/products/{{detail.pimg}}" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-6">
+                    <div class="gallery-info">
+                        <h3 style="text-transform: capitalize;">{{detail.pname}}</h3>
+                        <ul>
+                            <li style="text-transform: capitalize;"><strong>Category</strong>: {{detail.ctgname}}</li>
+                            <li><strong>Category Description</strong>: {{detail.ctgdesc}}</li>
+                            <li><strong>Price</strong>: {{detail.pprice | currency }}</li>
+                            <li><strong>Description</strong>: {{detail.pdesc}}</li>
+                            <li>
+                                <div class="text-center form-group mt-3">
+                                    <label for="qty">Quantity:</label>
+                                    <input type="number" ng-model="detail.qty" min="0" ng-init="qty = 0">
+                                </div>
+                            </li>
+                            <li>
+                                <form class="text-center form-group mt-3">
+
+                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal"><i
+                                            class='bx bx-cart-add' style="font-size: 22px;"></i>
+                                        Add to Cart
+                                    </button>
+
+                                    <div class="modal fade" id="modal" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"> <i class='bx bx-cart-add'></i> Add to Cart
+                                                    </h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p> Add <b class="text-capitalize"
+                                                            style="color: #ffce3a ;">{{detail.qty}}
+                                                            x {{detail.pname}}</b> to your Cart ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-bs-dismiss="modal" ng-click="addCart(detail)"> <i
+                                                            class='bx bx-cart-add'></i> Confirm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>
+
+<footer id="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 footer-contact">
+                    <h3><i class='bx bxs-cake'></i>Bakerz Bite</h3>
+                    <p>
+                        54 Le Thanh Nghi Street <br>
+                        Hai Ba Trung district, Ha Noi<br>
+                        Viet Nam <br><br>
+                        <strong>Phone:</strong> 0523.917.089<br>
+                        <strong>Email:</strong> minh.nv.2045@aptechlearning.edu.vn<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Map</h4>
+                    <ul>
+                        <li><iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.729556123599!2d105.84769451485397!3d21.00347528601206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad58455db2ab%3A0x9b3550bc22fd8bb!2zNTQgUC4gTMOqIFRoYW5oIE5naOG7iywgQsOhY2ggS2hvYSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1660708139799!5m2!1sen!2s"
+                                width="340" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe></li>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4> General</h4>
+                    <ul>
+                        <li><i class='bx bxs-time'></i>&nbsp; {{theTime}}</li>
+                        <li><i class='bx bxs-user-plus'></i>&nbsp; Visitor Counts: {{vcounter}}</li>
+                        <li><i class='bx bx-current-location'></i>&nbsp; Your Location: &nbsp;<div id="city"></div>
+                            &nbsp; <div id="country"></div>
+                        </li>
+                        <li><i class='bx bx-signal-5'></i>&nbsp; Your IP : &nbsp;<div id="ip"></div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Bakerz Bite</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+                Designed by <a href="#">C2112L Group1 AptechVN</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="youtube"><i class='bx bxl-youtube'></i></a>
+            <a href="#" class="reddit"><i class='bx bxl-reddit'></i></a>
+            <a href="#" class="tiktok"><i class='bx bxl-tiktok'></i></a>
+
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+
+
+<script src="assets/js/script.js"></script>

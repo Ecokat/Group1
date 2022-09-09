@@ -1,0 +1,185 @@
+<link rel="stylesheet" href="assets/css/admin.css">
+
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center"><img src="assets/img/avatar.png" alt="..." width="65"
+                class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0">&nbsp;ADMIN</h4>
+
+            </div>
+        </div>
+    </div>
+
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="#!/admin" class="nav-link text-dark font-italic">
+                <i class="bi bi-gear-fill"></i>
+                Admin Settings
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#!/admin-custs" class="nav-link text-dark font-italic ">
+                <i class="bi bi-person-fill"></i>
+                Customers
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-products" class="nav-link text-dark font-italic">
+                <i class='bx bxs-baguette'></i>
+                Products
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-ctgs" class="nav-link text-dark font-italic">
+                <i class="bi bi-list-columns-reverse"></i>
+                Categories
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-orders" class="nav-link text-dark font-italic bg-light">
+                <i class="bi bi-card-checklist"></i>
+                Orders
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-feedbacks" class="nav-link text-dark font-italic ">
+                <i class="bi bi-layout-text-sidebar-reverse"></i>
+                Feedbacks
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#!/admin-contacts" class="nav-link text-dark font-italic">
+                <i class="bi bi-envelope-fill"></i>
+                Contacts 
+            </a>
+        </li>
+    </ul>
+
+
+</div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+    <!-- Toggle button -->
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+            class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold"> Menu</small></button>
+    <section class="history">
+        <h3>Orders Management</h3>
+        <div class="success">
+            <p>{{updatesuccess}}</p>
+        </div>
+        <div class="table-responsive">
+            <table class="col-12 table table-hover table-striped">
+
+                <thead>
+                    <tr class="table-light">
+                        <th>Order</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Payment</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Detail</th>
+                        <th colspan="2">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="order in orders">
+                        <td>{{order.orderid}}</td>
+                        <td><input type="text" ng-model="order.address"></td>
+                        <td><input type="text" ng-model="order.phone" style="width: 120px;"></td>
+                        <td><input type="text" ng-model="order.payment" style="width: 150px;"></td>
+                        <td>{{order.total | currency}}</td>
+                        <td>{{order.createDate}}</td>
+                        <td><input type="text" ng-model="order.status" style="width: 80px;"></td>
+                        <td><button type="button" class="btn btn-success" ng-click="detail(order)"
+                                data-bs-toggle="modal" data-bs-target="#orderDetail">
+                                Detail</button></td>
+                        <td><button type="button" class="btn btn-primary" ng-click="updateOrder(order)"><i
+                                    class="bi bi-pencil-square"></i></button></td>
+                        <td><button type="button" class="btn btn-danger" ng-click="removeOrder(order)"><i
+                                    class="bi bi-trash"></i></button></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="orderDetail" tabindex="-1">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Order Detail</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Order No. {{orderdetails[0].orderid}}</h3>
+                        <div class="success">
+                            {{odsuccess}}
+                        </div>
+                        <div class="table-responsive">
+                            <table class="col-12 table table-hover table-striped">
+
+                                <thead>
+                                    <tr class="table-light">
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                        <th colspan="2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="orderdetail in orderdetails">
+                                        <td>{{orderdetail.pid}}</td>
+                                        <td class="text-capitalize">{{orderdetail.pname}}</td>
+                                        <td><input type="text" ng-model="orderdetail.quantity" style="width: 60px;"></td>
+                                        <td>{{orderdetail.pprice | currency}}</td>
+                                        <td>{{orderdetail.pprice * orderdetail.quantity | currency}}</td>
+                                        <td><button type="button" class="btn btn-primary"
+                                                ng-click="updateOD(orderdetail)"><i
+                                                    class="bi bi-pencil-square"></i></button>
+                                            <button type="button" class="btn btn-danger"
+                                                ng-click="removeOD(orderdetail)"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold table-ligt">
+                                        <td colspan="3" align="right">Total</td>
+                                        <td colspan="3"><span class="text-decoration-line-through">{{ setTotals() |
+                                                currency}}</span> <span style='color:#b01453'>{{ setTotals() * 95 /100 |
+                                                currency}}</span></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content -->
+
+
+</div>
+<!-- End content -->
+
+<script src="assets/js/admin.js"></script>

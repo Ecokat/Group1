@@ -1,0 +1,242 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="#"><i class='bx bxs-cake' style="color: #ffce3a;"></i>Bakerz Bite</a></h1>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                <li><a class="nav-link scrollto " href="#gallery">Gallery</a></li>
+
+
+                <li><a class="nav-link scrollto " href="#!/products"><i class='bx bx-baguette' style="font-size: 16px;"></i> Products</a></li>
+
+                <li class="dropdown"><a href="#!/customer"><span> <i class='bx bxs-user' style="font-size: 16px;"></i>
+                            {{customer}} </span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#!/login"> {{customer1}} </a></li>
+                        <li><a href="#!/signup"> {{customer2}} </a></li>
+                        <li><a href="#!/cart"> {{customer3}} </a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="#!/cart"> <i class='bx bx-cart' style="font-size: 20px;"></i>
+                        Cart &nbsp;<div class="cart-number text-center">{{cartnumber}}</div> </a></li>
+                <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+
+    <section class="profile">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="my-5">
+                        <h3><i class="bi bi-person-circle"></i> {{customer}}'s Profile</h3>
+                        <hr>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xxl-8">
+                            <div class="bg-secondary-soft px-4 py-5">
+                                <form ng-submit="update(cust)">
+                                    <div class="row g-3">
+                                        <h4 class="mb-4 mt-0">Contact Detail</h4>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name </label>
+                                            <input type="text" class="form-control" ng-model="cust.cfname" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name </label>
+                                            <input type="text" class="form-control" ng-model="cust.clname" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone number </label>
+                                            <input type="text" class="form-control" ng-model="cust.cphone" required>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <label for="inputEmail4" class="form-label">Email </label>
+                                            <input type="email" class="form-control" ng-model="cust.cemail" disabled>
+                                        </div>
+                                        <div class="success">
+                                            {{success}}
+                                        </div>
+                                        <div class="mt-4 text-center justify-content-center d-flex">
+                                            <button type="submit" class="btn btn-primary btn-lg">Update Profile</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-4">
+                            <div class="bg-secondary-soft px-4 py-5 rounded">
+                                <div class="row">
+
+                                    <div class="text-center">
+
+                                        <div class="position-relative display-2 mb-3">
+                                            <img src="assets/img/avatar.png" class="img-fluid" width="200" alt="img">
+                                        </div>
+                                        <a href="#!/products" class="mt-3">
+                                            <h4><i class="bi bi-bag"></i> Shopping <i class='bx bxs-chevrons-right'></i>
+                                            </h4>
+                                        </a>
+                                        <a href="#!/cart" class="mt-3">
+                                            <h4><i class="bi bi-cart3"></i> Check your Cart <i
+                                                    class='bx bxs-chevrons-right'></i></h4>
+                                        </a>
+                                        <a href="#!/history" class="mt-3">
+                                            <h4><i class="bi bi-card-checklist"></i> Manage Order History <i
+                                                    class='bx bxs-chevrons-right'></i></h4>
+                                        </a>
+                                        <div class="mt-4 text-center justify-content-center d-flex">
+                                            <button type="button" class="btn btn-danger btn-lg" ng-click="logout()">Log
+                                                Out</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-8">
+                            <div class="bg-secondary-soft px-4 py-5 rounded">
+                                <form ng-submit="changePass(pass)">
+                                    <div class="row g-3">
+                                        <h4 class="mb-4 mt-0">Change Password</h4>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">Old Password *</label>
+                                            <input type="password" class="form-control" ng-model="pass.old" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">New Password *</label>
+                                            <input type="password" class="form-control" ng-model="pass.new" required>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label class="form-label">Confirm Password *</label>
+                                            <input type="password" class="form-control" ng-model="pass.confirm"
+                                                required>
+                                        </div>
+                                        <div class="error">
+                                            {{paError}}
+                                        </div>
+                                        <div class="success">
+                                            {{paSuccess}}
+                                        </div>
+                                        <div class=" text-center justify-content-center d-flex">
+                                            <button type="submit" class="btn btn-primary btn-lg">Change
+                                                Password</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+</main>
+
+<footer id="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 footer-contact">
+                    <h3><i class='bx bxs-cake'></i>Bakerz Bite</h3>
+                    <p>
+                        54 Le Thanh Nghi Street <br>
+                        Hai Ba Trung district, Ha Noi<br>
+                        Viet Nam <br><br>
+                        <strong>Phone:</strong> 0523.917.089<br>
+                        <strong>Email:</strong> minh.nv.2045@aptechlearning.edu.vn<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Map</h4>
+                    <ul>
+                        <li><iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.729556123599!2d105.84769451485397!3d21.00347528601206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad58455db2ab%3A0x9b3550bc22fd8bb!2zNTQgUC4gTMOqIFRoYW5oIE5naOG7iywgQsOhY2ggS2hvYSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1660708139799!5m2!1sen!2s"
+                                width="340" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe></li>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4> General</h4>
+                    <ul>
+                        <li><i class='bx bxs-time'></i>&nbsp; {{theTime}}</li>
+                        <li><i class='bx bxs-user-plus'></i>&nbsp; Visitor Counts: {{vcounter}}</li>
+                        <li><i class='bx bx-current-location'></i>&nbsp; Your Location: &nbsp;<div id="city"></div>
+                            &nbsp; <div id="country"></div>
+                        </li>
+                        <li><i class='bx bx-signal-5'></i>&nbsp; Your IP : &nbsp;<div id="ip"></div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Bakerz Bite</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+                Designed by <a href="#">C2112L Group1 AptechVN</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="youtube"><i class='bx bxl-youtube'></i></a>
+            <a href="#" class="reddit"><i class='bx bxl-reddit'></i></a>
+            <a href="#" class="tiktok"><i class='bx bxl-tiktok'></i></a>
+
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+<script src="assets/js/script.js"></script>
